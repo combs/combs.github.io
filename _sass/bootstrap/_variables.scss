@@ -24,6 +24,13 @@ $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
+$color-combs-green: #73D800;
+$color-combs-green-dim: #95C85B;
+
+$color-combs-grey: #2C2E29;
+
+$color-combs-blue: #214D8E;
+$color-combs-purple: #705283;
 
 //== Scaffolding
 //
@@ -71,7 +78,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 $headings-font-family:    inherit !default;
 $headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
-$headings-color:          inherit !default;
+$headings-color:          $color-combs-grey !default;
 
 
 //== Iconography
