@@ -1,0 +1,11 @@
+---
+--- 
+// Core variables and mixins
+@import "bootstrap/variables";
+
+@import "bootstrap/mixins";
+
+h1 > small, h2 > small, h3 > small, h4 > small {
+	color: $color-combs-green;
+	font-weight: 300;
+}
