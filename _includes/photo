@@ -1,0 +1,4 @@
+<div class="container-fluid">
+	<img src="{{ HOME_PATH }}assets/images/{{ include.src }}" alt="{{ include.caption }}" class="photo">
+	<p class="caption">{{ include.caption }}</p>
+</div>
