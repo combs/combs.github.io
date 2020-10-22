@@ -1,0 +1,33 @@
+
+{% assign usedit = 0 %}
+ 
+	{% assign scratch = "" | split: "|" %}
+
+	{% for thistag in tags_list %}
+		
+		{% assign results = site.data.tag-categories | where: "tag", thistag | where: "category", include.query | first %} 
+	  	
+  		{% unless results.tag == nil %}
+	 		{% assign usedit = 1 %}
+	 		
+			{% assign scratch = scratch | push: results.tag %} 
+			 
+		{% endunless %}
+	
+	{% endfor %}
+	
+	
+	{% unless usedit == 0 %}
+	
+	{% if include.title == nil %}
+	{% assign include.title = include.query %}
+	
+	{% endif %}
+
+	<dt> {{ include.title }} </dt>
+	<dd> {{ scratch | array_to_sentence_string | capitalize }} </dd>
+	
+	{% endunless %}
+	 
+	
+	

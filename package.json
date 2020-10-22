@@ -1,0 +1,40 @@
+{
+  "name": "combs.github.io",
+  "version": "1.0.0",
+  "description": "The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages",
+  "main": "js/index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --env=prod --progress --profile --colors",
+    "fullbuild": "cross-env NODE_ENV=production webpack --env=prod --progress --profile --colors && cross-env JEKYLL_ENV=production jekyll build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack-dev-server --open --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/combs/combs.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/combs/combs.github.io/issues"
+  },
+  "homepage": "https://github.com/combs/combs.github.io#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.26.7",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "domready": "^1.0.8"
+  }
+}

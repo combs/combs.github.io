@@ -1,10 +1,6 @@
-<div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+<div class="jumbotron">
+  <h1>{{ page.title }} {% if page.tagline %} <small class="tagline animate-fadein-delay">{{ page.tagline }}</small>{% endif %}</h1>
 </div>
 
-<div class="row">
-  <div class="col-xs-6">
-    {{ content }}
-  </div>
-  {% include photo src="AVAM-icon-2b.jpg" caption="My smiling face." class="col-xs-6" %}
-</div>
+
+{{ content }}

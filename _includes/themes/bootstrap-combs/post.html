@@ -1,47 +1,180 @@
+<div class="container-fluid post" >
+
 <div class="page-header">
-  <h1>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h1>
+  <h1>{{ page.title }} {% if page.tagline %}<small class="animate-fadein">{{page.tagline}}</small>{% endif %}</h1>
 </div>
 
-<div class="row post-full">
-  <div class="col-xs-12">
-    <div class="date">
-      <span>{{ page.date | date_to_long_string }}</span>
+<div class="row post-full flex-except-xs">
+
+{% if page.galleryimages == nil and page.videos == nil and page.instagrams == nil and page.youtubes == nil %}
+
+  <div class="col-sm-1 col-md-2 col-lg-3 container-spacer"> </div>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 container-description" style="flex: 1;">
+
+{% else %}
+
+
+  <div class="col-xs-12 col-sm-6 col-md-7 container-media" style="flex: 1;">
+
+	{% unless page.youtubes == nil %}
+
+		{% for theyoutube in page.youtubes %}
+
+			{% include youtube id=theyoutube %}
+
+ 		{% endfor %}
+
+	{% endunless %}
+
+  {% unless page.videos == nil %}
+
+    {% for thevideo in page.videos %}
+
+      {% include video src=thevideo %}
+
+    {% endfor %}
+
+  {% endunless %}
+
+	{% unless page.galleryimages == nil %}
+
+		{% for theimage in page.galleryimages %}
+
+ 			{% if page.gallerycaptions[forloop.index0] == blank %}
+
+				{% include photo src=theimage caption="" %}
+
+			{% else %}
+
+				{% assign thecaption=page.gallerycaptions[forloop.index0] %}
+
+				{% capture thesizes %}(min-width:30em) 70vw,100vw{% endcapture %}
+
+				{% comment %}
+
+				If you add a space between the colon and the value, Jekyll somehow interprets this as an array?
+				despite the dox clearly stating that capture produces a string. [insert shrug emoji]
+
+				{% endcomment %}
+
+				{% include photo src=theimage caption=thecaption sizes=thesizes %}
+
+			{% endif %}
+
+
+		{% endfor %}
+
+	{% endunless %}
+
+	{% if page.instagrams %}
+
+		{% for theinstagram in page.instagrams %}
+
+			{% include instagram id=theinstagram %}
+
+		{% endfor %}
+
+	{% endif %}
+
+
+	{% unless page.link == nil %}
+
+	<h3 class="link hidden-xs"><a href="{{ page.link}}">See more...</a></h3>
+
+	{% endunless %}
+
+
+
+  </div>
+
+
+
+  <div class="col-xs-12 col-sm-6  col-md-5 container-description animate-fadein-delay" style="flex: 1;">
+
+{% endif %}
+
+    <div class="metadata animate-fadein-delay">
+      <dl class="dl-horizontal">
+
+	{% assign tags_list = page.tags | sort %}
+
+
+       	<dt>Date</dt>
+      	<dd>{{ page.date | date_to_long_string }}</dd>
+
+      	{% unless page.github == nil %}
+
+	      	<dt>Source code</dt>
+	      	<dd>   <a href="{{ page.github }}">View on GitHub</a>
+		      	  </dd>
+
+      	{% endunless %}
+      	{% unless page.status == nil %}
+
+	      	<dt>Status</dt>
+	      	<dd>   {{ page.status | join: "|" | split: "|" | array_to_sentence_string: ", " | capitalize}}
+		      	  </dd>
+
+      	{% endunless %}
+
+        {% unless page.materials == nil %}
+
+          <dt>Materials</dt>
+          <dd>   {{ page.materials | join: "|" | split: "|" | array_to_sentence_string }}
+              </dd>
+
+        {% endunless %}
+
+      	{% unless page.dimensions == nil %}
+
+	      	<dt>Dimensions</dt>
+	      	<dd>   {{ page.dimensions | join: "|" | split: "|" | array_to_sentence_string | capitalize}}
+		      	  </dd>
+
+      	{% endunless %}
+
+      	{% include get_tag_category query="Roles" title="My role" %}
+
+      </dl>
     </div>
-    <div class="content">
+
+    <div class="content" >
+
+	{% unless page.link == nil %}
+
+	<h3 class="link"><a href="{{ page.link }}">See &ldquo;{{ page.title }}&rdquo; <i class="glyphicon glyphicon-circle-arrow-right"> </i></a></h3>
+
+	{% endunless %}
+
+
       {{ content }}
     </div>
 
-  {% unless page.categories == empty %}
-    <ul class="tag_box inline">
-      <li><i class="glyphicon glyphicon-folder-open"></i></li>
-      {% assign categories_list = page.categories %}
-      {% include JB/categories_list %}
-    </ul>
-  {% endunless %}  
+    <h2 id="how-was-it-made">How was it made?</h2>
 
-  {% unless page.tags == empty %}
-    <ul class="tag_box inline">
-      <li><i class="glyphicon glyphicon-tag"></i></li>
-      {% assign tags_list = page.tags %}
-      {% include JB/tags_list %}
-    </ul>
-  {% endunless %}  
-  
+
+	{% include tags_list_post %}
+
     <hr>
+
+	{% include emotes %}
+
+
     <ul class="pagination">
     {% if page.previous %}
-      <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a></li>
+      <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title  }}"><i class="glyphicon glyphicon-circle-arrow-left"> </i> <span class="truncate-30">{{ page.previous.title }}</span></a></li>
     {% else %}
-      <li class="prev disabled"><a>&larr; Previous</a></li>
+      <li class="prev disabled"><a><i class="glyphicon glyphicon-circle-arrow-left"> </i> Previous </a></li>
     {% endif %}
-      <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
+      <li><a href="/projects/all/">All</a></li>
     {% if page.next %}
-      <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a></li>
+      <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title  }}"> <span class="truncate-30">{{ page.next.title }}</span> <i class="glyphicon glyphicon-circle-arrow-right"> </i></a></li>
     {% else %}
-      <li class="next disabled"><a>Next &rarr;</a>
+      <li class="next disabled"><a>Next <i class="glyphicon glyphicon-circle-arrow-right"> </i></a>
     {% endif %}
     </ul>
-    <hr>
-    {% include JB/comments %}
-  </div>
+    {% include mailchimp %}
+    {% include contact %}
+
+</div>
 </div>

@@ -1,0 +1,14 @@
+---
+layout: page
+title : Projects
+group: nonavigation
+permalink: /projects/date/
+tagline: Sort by <a href="/projects/date/" class="active">date</a>, <a href="/projects/all/">name</a>, <a href="/projects/tag" class="">tag</a>
+exclude_from_search: true
+
+---
+{% include JB/setup %}
+ 
+
+{% assign posts_collate = site.posts %}
+{% include JB/posts_collate %}

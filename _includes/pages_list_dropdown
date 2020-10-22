@@ -1,0 +1,63 @@
+{% comment %}<!--
+The pages_list include is a listing helper.
+Usage:
+  1) assign the 'pages_list' variable to a valid array of pages or posts.
+  2) include JB/pages_list
+  example:
+    <ul>
+  	  {% assign pages_list = site.pages %}  
+  	  {% include JB/pages_list %}
+  	</ul>
+  	
+  Grouping: (optional): 
+  	assign the 'group' variable to constrain the list to only pages/posts
+  	in the given group. Note you must define the group manually in the page/post
+  	meta-data to use this feature.
+  	Grouping is mainly helpful for non-post pages.
+  	If you want to group posts, it's easier/better to tag them, then pass the tagged posts array.
+  	i.e. site.tags.cool_tag (this returns an array of posts tagged: cool_tag)
+  	
+  This helper can be seen in use at: ../_layouts/default.html
+-->{% endcomment %}
+{% if site.JB.pages_list.provider == "custom" %}
+  {% include custom/pages_list %}
+{% else %}
+	
+	{% if include.title == nil %}
+		{% capture thetitle %}See more&hellip;{% endcapture %}
+	{% else %}
+		{% assign thetitle=include.title %}
+	{% endif %}
+	{% if include.alt == nil %}
+		{% capture thealt %}{% increment counter-dropdown %}{% endcapture %}
+	{% else %}
+		{% assign thealt=include.alt %}
+	{% endif %}
+	
+	<div class="dropdown ">
+	  <button class="btn btn-small dropdown-toggle" type="button" id="dropdownMenu-{{ thealt }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    {{ thetitle }} {% unless include.count == nil %} <span class="badge">{{ pages_list.size }} </span> {% endunless %} 
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu-{{ thealt }}"> 
+	
+  {% for node in pages_list %}
+    {% if node.title != null %}
+      {% if group == null or group == node.group %}
+      	{% if page.url == node.url %}
+      	<li class="disabled"><a href="{{ BASE_PATH }}{{node.url}}" class="disabled">{{node.title}}</a></li>
+      	{% else %}
+      	<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
+      	{% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  
+  </ul>
+</div>
+
+
+
+{% endif %}
+{% assign pages_list = nil %}
+{% assign group = nil %}

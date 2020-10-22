@@ -1,0 +1,13 @@
+---
+theme:
+name: JSON
+layout: json
+---
+
+{ 
+	"content":[ {
+
+		"body" :  {{ as_liquid(page.content) | jsonify }}     } ],
+		"type" : page.content.class
+
+}

@@ -1,0 +1,15 @@
+---
+layout: page
+title : Projects
+header : Projects (view all)
+group: navigation
+permalink: /projects/all/
+tagline: Sort by <a href="/projects/date/">date</a>, <a href="/projects/all/" class="active">name</a>, <a href="/projects/tag" class="">tag</a>
+exclude_from_search: true
+---
+{% include JB/setup %}
+
+<div class="container-fluid thumbnails">
+{% assign thumbs_list = site.posts | sort: 'title' %}
+{% include thumbnails %}
+</div>

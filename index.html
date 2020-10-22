@@ -1,0 +1,88 @@
+---
+layout: homepage
+title: Chris Combs
+tagline: is an artist and technologist in Washington, D.C.
+exclude_from_search: true
+heroimage: rxsqtta-stzne-complete.jpg
+---
+{% include JB/setup %}
+
+
+{% assign art-machine-posts = site.posts | where_exp: "post", "post.category contains 'Art'"  %}
+
+
+
+<div class="container-fluid thumbnails">
+    <div class="row">
+
+        <div class="col-xs-12 col-md-8">
+            <h2>Updates</h2>
+            <ul>
+                <li>My "Point of Sale" is in <a href="https://artsandculture.google.com/exhibit/global-conversation-2020/AwKS-tmWI3mlKQ">Google Arts & Culture</a> (several slides in) as part of the UN75 "Global Conversation" exhibition.</li>
+                <li>I'm honored to report that the DC Commission on the Arts and Humanities awarded me an Arts & Humanities Fellowship Program grant, no. FY21-AHFP-07741.</li>
+                <li>My pieces in the 1460 Wallmountables show got <a href="https://www.washingtonpost.com/entertainment/museums/art-gallery-shows-in-dc/2020/09/30/361b9bfc-01b4-11eb-b7ed-141dd88560ea_story.html?fbclid=IwAR3aF2GWmLeXeS1eLQy-865Ul-WXdXxQcdffsUB6xFiC8IYcI7SeJ-fFLDg">a mention in the Post</a>.</li>
+                <li>A few remaining limited edition yellow hand-washing timers are <a href="https://combs.bigcartel.com/product/no-touch-hand-washing-timer-limited-edition-yellow">now available in my web store.</a></li>
+            </ul>
+            <h2>Social</h2>
+            <p><a href="http://instagram.com/ccombsdc" class="btn btn-default" style="text-decoration: none;"> Instagram </a> <a href="http://facebook.com/ccombsdc" class="btn btn-default" style="text-decoration: none;"> Facebook </a> <a href="http://twitte.rcom/ccombs" class="btn btn-default" style="text-decoration: none;"> Twitter </a></p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <h2>About Chris</h2>
+            <span style="font-style: italic;">
+                <p>Chris Combs's artworks respond to pressing themes of surveillance, artificial intelligence, and algorithmic failure—and to the viewer, using facial recognition and motion sensing.</p>
+
+<p>He employs a wide range of practices to create circuit boards, software, and enclosures for interactive and time-based wood, metal, and found-object sculptures, which both embrace and question technology. Their custom circuitry is engineered by the artist and hand-soldered with millimeter-scale components.</p>
+
+<p>Chris Combs's sculptures address changes in our built technology environment—changes which often occur before we understand their implications. His artwork makes these macro-scale changes tangible, letting us consider them anew. </p>
+            </p>
+            </span>
+
+        </div>
+    </div>
+
+    <div class="row">
+		<div class="col-xs-12">
+			<h2>Artwork</h2>
+		</div>
+
+	</div>
+
+	{% assign thumbs_list = art-machine-posts %}
+
+	{% include thumbnails %}
+
+
+
+{% comment %}
+	<div class="row">
+
+	  <div class="col-xs-12 col-md-9">
+
+		<h3> What's New </h3>
+
+
+	    <ul class="posts">
+		  {% for post in site.posts %}
+		    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+		  {% endfor %}
+		</ul>
+
+
+	  </div>
+	  {% include photo src="AVAM-icon-2b.jpg" caption="" class="col-xs-6 col-md-3 hue-colorize" %}
+
+
+	</div>
+{% endcomment %}
+
+</div>
+<div class="container-fluid">
+		<div class="row">
+		<div class="col-xs-12 col-sm-6">
+	    {% include mailchimp %}
+		</div>
+		<div class="col-xs-12 col-sm-6">
+	    {% include contact %}
+		</div>
+	</div>
+</div>

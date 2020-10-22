@@ -1,0 +1,6 @@
+<div class="video {{ include.class }} ">
+	<video loop controls autoplay alt="{{ include.caption }}">
+	<source src="/assets/videos/{{ include.src }}" type="video/mp4"></source>
+	</video>
+	<p class="caption">{{ include.caption }}</p>
+</div>

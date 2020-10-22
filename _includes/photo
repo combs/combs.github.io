@@ -1,4 +1,46 @@
-<div class="container-fluid {{ include.class }} ">
-	<img src="{{ HOME_PATH }}assets/images/{{ include.src }}" alt="{{ include.caption }}" class="photo">
+<div class="photo {{ include.class }} ">
+
+	{% capture thisimage %}assets/images/{{ include.src | strip }}{% endcapture %}
+	{% capture thisimagefullpath %}/{{ thisimage }}{% endcapture %}
+	{% capture thisimagestripped %}{{ thisimage | remove_first:'/' }}{% endcapture %}
+
+{% assign doit = false %}
+
+{% for static_file in site.static_files %}
+    {% if static_file.path == thisimagefullpath %}
+
+		{% assign doit = true %}
+
+	{% endif %}
+
+{% endfor %}
+
+{% if doit == false %}
+
+	warning: {{ thisimagefullpath }} could not be found
+
+{% else %}
+
+{% responsive_image_block %}
+    path: {{ thisimage }}
+    {% if include.caption %}
+    title: {{ include.caption | strip_html }}
+    alt: {{ include.caption | strip_html | truncatewords: 15 }}
+    {% endif %}
+    {% if include.imgclass %}
+    class: {{ include.imgclass }}
+    {% endif %}
+    {% if include.sizes %}
+    sizes: {{ include.sizes }}
+    {% endif %}
+{% endresponsive_image_block %}
+
+{% endif %}
+
+{% unless include.caption == blank %}
+
 	<p class="caption">{{ include.caption }}</p>
+
+{% endunless %}
+
 </div>

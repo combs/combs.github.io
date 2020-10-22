@@ -1,0 +1,13 @@
+<div class="container-fluid {{ include.class }} ">
+
+	{% assign theurl = "http://api.instagram.com/oembed/?url=https://instagram.com/p/" | append: include.id | append: "/" | dump_console: "instagram" %}
+
+	{% jsonball feed from cachedurl theurl %}
+
+	{{ feed.html }}
+
+{% comment %}
+	{{ feed }}
+{% endcomment %}
+
+</div>

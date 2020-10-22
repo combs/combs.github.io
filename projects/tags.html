@@ -1,0 +1,117 @@
+---
+layout: page
+title: Projects
+header: Projects
+group: nonavigation
+permalink: /projects/tag/
+tagline: Sort by <a href="/projects/date/" class="">date</a>, <a href="/projects/all/">name</a>, <a href="/projects/tag" class="active">tag</a>
+
+
+---
+{% include JB/setup %}
+ 
+
+{% assign categories_list = "" | split: "|" %}
+
+{% for thistag in site.data.tag-categories %}
+	
+	{% unless categories_list contains thistag.category %}
+	
+		{% assign categories_list = categories_list | push: thistag.category %}
+
+	{% endunless %}
+	
+{% endfor %} 
+
+{% assign categories_list = categories_list | sort %}
+
+Jump to:
+<ul>
+{% for category in categories_list %}
+<li><a href="#category_{{ category }}">{{ category }} </a></li>
+
+{% endfor %}
+
+</ul>
+
+
+{% assign tags_used = "" | split: "|" %}
+{% assign tags_uncategorized = "" | split: "|" %}
+
+
+
+{% for this_category in categories_list %}
+
+	<a name="category_{{ this_category }}"></a>
+	<h2>{{ this_category }}</h2>
+	<ul>
+	{% assign filtered = site.data.tag-categories | where: "category", this_category | sort: "tag" | sort_natural: "tag" | uniq %}
+	
+	{% for thistag in filtered  %}
+  		
+		{% unless site.tags[thistag.tag] == nil %} 
+
+			{% assign tags_used = tags_used | push: thistag.tag %}
+
+			<a name="{{ thistag.tag }}"></a>
+			<li><h3>{{ thistag.tag }} <small> {{ thistag.description }} </small></h3>
+				<ul>		
+				
+				{% assign pages_list = site.tags[thistag.tag] | sort: "tag" | sort_natural: "tag" | uniq %}
+				
+				{% include JB/pages_list %}
+   				
+   				{% assign tags_list = tags_list | push: this_item %}
+   				
+   				
+   				</ul>
+  				</li>
+			
+		{% endunless %}
+	
+				
+	{% endfor %}
+		
+	</ul>
+	
+	
+{% endfor %}
+
+
+{% assign tags_list = site.tags | sort_natural:"tag" %}
+	
+
+{% for this_item in tags_list %}
+
+	{% unless tags_used contains this_item[0] %}
+	
+		{% assign tags_uncategorized = tags_uncategorized | push: this_item[0] %}
+	
+	{% endunless %}
+
+{% endfor %}
+
+{% unless tags_uncategorized.size == 0 %}
+
+	<a name="other"> </a>
+	<h2>Other Tags</h2>
+	
+	<ul> 	
+	{% for this_item in tags_uncategorized %}
+		<li>
+	
+		<h3><a name="{{this_item}}"></a>{{ this_item }}</h3>
+		
+			{% assign pages_list = site.tags[this_item] | uniq %}
+			<ul>
+				{% include JB/pages_list %}
+			</ul>
+		
+		</li>
+		
+	{% endfor %}
+	
+	</ul>
+{% endunless %}
+
+

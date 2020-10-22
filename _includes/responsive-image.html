@@ -1,0 +1,15 @@
+{% capture srcset %}{% for i in resized %}/{{ i.path | replace: ' ','%20' }} {{ i.width }}w,{% endfor %}{% endcapture %}
+
+{% if class contains "thumb" %}
+{% comment %} If you know a better way to cast to float in Liquid, I'm all ears {% endcomment %}
+{% assign bigwidth = 0.0001 | plus: original.width | minus: 0.0001 %}
+{% assign bigheight = 0.0001 | plus: original.height | minus: 0.0001 %}
+{% assign ratio = bigheight | divided_by: bigwidth %}
+{% if ratio < 0.6 or ratio > 0.7 %}
+{% capture class %}{{class}} center-3-by-2{% endcapture %}
+{% endif %}
+{% endif %}
+
+{{ i.path | uri_escape }}
+<img src="/{{ resized[0].path | replace: ' ', '%20' }}"
+   data-nope="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="{{ srcset | strip_newlines }} /{{ original.path | replace: ' ','%20' }} {{ original.width }}w" alt="{{ alt }}" class="lazyload {{ class }}" sizes="{{ sizes }}" title="{{ title }}">

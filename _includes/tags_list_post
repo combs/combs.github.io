@@ -1,0 +1,112 @@
+
+{% assign categories_list = "" | split: "|" %}
+
+{% for thistag in site.data.tag-categories %}
+
+	{% unless thistag.category == nil %}
+
+		{% unless categories_list contains thistag.category %}
+
+			{% assign categories_list = categories_list | push: thistag.category | sort %}
+
+		{% endunless %}
+
+	{% endunless %}
+
+{% endfor %}
+
+
+{% assign tags_used = "" | split: "|" %}
+{% assign tags_uncategorized = "" | split: "|" %}
+
+
+{% for category in categories_list %}
+
+	{% assign this_category_list = "" | split: "|" %}
+
+	{% assign usedyet = 0 %}
+
+	{% for thistag in tags_list %}
+
+		{% assign results = site.data.tag-categories | where: "tag", thistag | where: "category", category | first %}
+
+  		{% unless results.tag == null %}
+
+			{% assign this_category_list = this_category_list | push: results.tag %}
+			{% assign usedyet = 1 %}
+			{% assign tags_used = tags_used | push: results.tag %}
+
+		{% endunless %}
+
+	{% endfor %}
+
+
+	{% unless usedyet == 0 %}
+
+		<a name="category_{{ category }}"></a>
+		{% capture categorylink %}{{ site.baseurl }}{{ site.JB.tags_path }}#category_{{ category }}{% endcapture %}
+		<a href="{{ categorylink }}"><h3>{{ category }}</h3></a>
+		<ul>
+
+		{% assign this_category_list = this_category_list | uniq | sort | sort_natural %}
+
+		{% for this_tag in this_category_list %}
+
+ 			{% assign this_result = site.data.tag-categories | where: "tag", this_tag | where: "category", category | first %}
+
+			{% if this_result.tag.size > 0 %}
+	 			<h4><!--<a href="{{ BASE_PATH }}/projects/tag/#{{this_result.tag}}" title="{{ this_result.description | escape | replace: '"','&rdquo;' }}">-->{{ this_result.tag }}<!--</a>-->
+	 			{% if site.tags[this_result.tag].size > 1 %}
+		 			{% assign pages_list = site.tags[this_result.tag] | sort:'title' | sort_natural:'title' %}
+		 			{% include pages_list_dropdown alt=this_result.tag title="Also in&hellip;" %}
+ 			{% else %}
+	 			<button class="btn btn-small disabled">Only used here</button>
+	 			{% endif %}
+	 			<br/> <small>{{ this_result.description }} </small>
+	 			</h4>
+
+			{% endif %}
+
+		{% endfor %}
+
+
+		</ul>
+
+	{% endunless %}
+
+{% endfor %}
+
+
+{% for this_item in tags_list %}
+
+	{% unless tags_used contains this_item %}
+
+		{% assign tags_uncategorized = tags_uncategorized | push: this_item %}
+
+	{% endunless %}
+
+{% endfor %}
+
+	{% assign tags_uncategorized = tags_uncategorized | sort | sort_natural %}
+
+{% unless tags_uncategorized.size == 0 %}
+
+	<h3><a href="{{ site.baseurl }}{{ site.JB.tags_path }}">Tags</a></h3>
+
+	<ul>
+
+	{% for this_item in tags_uncategorized %}
+
+		<h4><!--<a href="{{ BASE_PATH }}/projects/tag/#{{this_item}}">-->{{ this_item }}<!--</a>-->
+			{% if site.tags[this_item].size > 1 %}
+	 			{% assign pages_list = site.tags[this_item] | sort:'title' | sort_natural:'title' %}
+	 			{% include pages_list_dropdown alt=this_item %}
+ 			{% else %}
+	 			<button class="btn btn-small disabled">Only used here</button>
+
+	 		{% endif %}
+			</h4>
+	{% endfor %}
+
+	</ul>
+{% endunless %}

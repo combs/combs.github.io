@@ -1,0 +1,17 @@
+<div class="form-inline emotes" id="emotes" data-id="{{ page.url | slugify }}" style="display: none;"><h4>I think this is...</h4>
+
+{% include emote label="A+" icon="star-empty" %}
+{% include emote label="Compelling" icon="magnet" %}
+{% include emote label="Confusing" icon="question-sign" %}
+{% include emote label="Cool" icon="sunglasses" %}
+{% include emote label="Futuristic" icon="road" %}
+{% include emote label="Okay" icon="ok" %}
+{% include emote label="Oldsk00l" icon="floppy-disk" %}
+{% include emote label="Smart" icon="flash" %}
+{% include emote label="Smokin'" icon="fire" %}
+{% include emote label="Rulin'" icon="queen" %}
+{% include emote label="Wholesome" icon="apple" %}
+{% include emote label="Yawn" icon="hourglass" %}
+
+<div class="clearfix"> </div>
+</div>

@@ -1,0 +1,31 @@
+---
+layout: page
+category: nonavigation
+title: All Images
+exclude_from_search: true
+---
+{% include JB/setup %}
+{% capture thesizes %} (min-width:50em) 15vw, (min-width:30em) 25vw, 50vw {% endcapture %}
+
+</div>
+{% directory path: assets/images false exclude: .rtf|.html|.pdf %}
+	{% assign iterator = iterator | plus: 1 %}
+	{% capture filename %}{{ file.name }}{% endcapture %}
+	{% capture thecaption %}<small><a href="/assets/images/{{file.name}}">{{ file.name }}</a></small>{% endcapture %}
+	{% include photo src=filename caption=thecaption class="col-xs-6 col-sm-3 col-md-2" imgclass="thumb" sizes=thesizes %}
+                         {% assign modulovalue = iterator | modulo:6 %}
+                         {% if modulovalue == 0 %}
+                                <div class="clearfix visible-md-block visible-lg-block visible-xl-block "></div>
+	                     {% endif %}
+                         {% assign modulovalue = iterator | modulo:4 %}
+                         {% if modulovalue == 0 %}
+                                <div class="clearfix visible-sm-block"></div>
+	                     {% endif %}
+                         {% assign modulovalue = iterator | modulo:2 %}
+                         {% if modulovalue == 0 %}
+                                <div class="clearfix visible-xs-block"></div>
+	                     {% endif %}
+
+{% enddirectory %}
+
+<div>

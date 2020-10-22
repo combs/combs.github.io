@@ -1,0 +1,3 @@
+<a href="" class="text-center btn btn-large emote" data-emote="{{ include.label | slugify }}"><i class="glyphicon glyphicon-{{ include.icon }}"> </i>
+<br>{{ include.label }}</a>
+

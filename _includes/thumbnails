@@ -1,0 +1,81 @@
+	<div class="row thumbnails">
+
+		{% assign iterator = 0 %}
+
+		{% capture thesizes %}(min-width:1000px) 34vw, (min-width:550px) 50vw, 100vw{% endcapture %}
+
+		{% comment %}
+
+		If you add a space between the colon and the value, Jekyll somehow interprets this as an array?
+		despite the dox clearly stating that capture produces a string. [insert shrug emoji]
+
+		{% endcomment %}
+
+
+		  {% for post in thumbs_list %}
+            {% assign statuses = post.status %}
+			{% assign iterator = iterator | plus: 1 %}
+
+				<a href="{{ BASE_PATH }}{{ post.url }}">
+
+				<div class="col-xs-12 col-sm-6 col-md-4 thumb {% unless post.category == nil %}category-{{ post.category | replace: ' ', '-' | downcase }}{% endunless %} {% for status in statuses %} status-{{ status | slugify }}{% endfor %}">
+
+				{% if post.heroimage == nil %}
+
+					<div class="image-placeholder {% unless post.category == nil %}category-{{ post.category | replace: ' ', '-' | downcase }}{% endunless %}"> </div>
+
+
+				{% else %}
+
+
+
+					{% include photo src=post.heroimage caption="" sizes=thesizes imgclass="thum" %}
+
+				{% endif %}
+
+				<h4>{% unless post.category == nil %}{{ post.category }} | {% endunless %}{{ post.date | date_to_string }}</h4>
+				<h3>
+				{{ post.title }}</h3>
+
+				{% comment %}
+				{% unless post.tagline == nil %}<h4>{{ post.tagline }} </h4> {% endunless %}
+				{% endcomment %}
+
+				<div class="badges">
+					{% if post.status contains "Upcoming show" %}<span class="badge"><i class="glyphicon glyphicon-time upcoming-show"> </i> Upcoming show</span>
+					{% endif %}
+
+					{% if post.status contains "On display" %}<span class="badge"><i class="glyphicon glyphicon-map-marker on-display"> </i> On display</span>
+					{% endif %}
+
+					{% if post.status contains "Auction" %}<span class="badge"><i class="glyphicon glyphicon-bullhorn available"> </i> Auction</span>
+					{% endif %}
+
+					{% if post.status contains "Available" %}<span class="badge"><i class="glyphicon glyphicon-star available"> </i> Available</span>
+					{% endif %}
+
+					{% if post.status contains "collection" %}<span class="badge badge-light"><i class="glyphicon glyphicon-lock"> </i> Sold</span>
+					{% endif %}
+
+
+				</div>
+
+				</div></a>
+
+			 {% assign modulovalue = iterator | modulo:3 %}
+			 {% if modulovalue == 0 %}
+
+			 	<div class="clearfix visible-md-block visible-lg-block visible-xl-block"></div>
+
+		     {% endif %}
+
+			 {% assign modulovalue = iterator | modulo:2 %}
+			 {% if modulovalue == 0 %}
+
+			 	<div class="clearfix visible-sm-block"></div>
+
+		     {% endif %}
+
+		  {% endfor %}
+
+	</div>

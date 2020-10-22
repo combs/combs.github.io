@@ -1,0 +1,16 @@
+---
+theme:
+name: JSON
+layout: json
+---
+{% include JB/setup %}
+
+{ 
+	"content":[ {
+		{% capture thecontent %}{{ page.content }}{% endcapture %} 
+	
+		"body" :  {{ thecontent | jsonify }}  
+
+		}]
+
+}

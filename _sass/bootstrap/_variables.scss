@@ -12,26 +12,29 @@ $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")
 //
 //## Gray and brand colors for use across Bootstrap.
 
+$color-combs-green: #73D800;
+$color-combs-green-dim: #95C85B;
+$color-combs-grey: #2C2E29;
+$color-combs-grey-light: #E4E4E4;
+$color-combs-grey-lighter: #EEEEEE;
+$color-combs-grey-lightest: #F9F9F8;
+$color-combs-blue: #214D8E;
+$color-combs-blue-grey: #516A8F;
+$color-combs-purple: #705283;
+
 $gray-darker:            lighten(#000, 13.5%) !default; // #222
 $gray-dark:              lighten(#000, 20%) !default;   // #333
 $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 46.7%) !default; // #777
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #428bca !default;
+// $brand-primary:         #428bca !default;
+$brand-primary: $color-combs-blue !default;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
-$color-combs-green: #73D800;
-$color-combs-green-dim: #95C85B;
-
-$color-combs-grey: #2C2E29;
-$color-combs-grey-light: #D6D8D4;
-$color-combs-grey-lightest: #F9F9F8;
-$color-combs-blue: #214D8E;
-$color-combs-purple: #705283;
 
 //== Scaffolding
 //
@@ -52,14 +55,14 @@ $link-hover-color:      darken($link-color, 15%) !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Source Sans Pro", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  "Lato", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
-$font-size-body:          87.5% !default; // 14px
-$font-size-base:          14px !default;
+$font-size-body:          100% !default; // 14px
+$font-size-base:          16px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -79,7 +82,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)) !default;
 $headings-font-family:    inherit !default;
 $headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
-$headings-color:          $color-combs-grey !default;
+$headings-color:          $color-combs-blue !default;
 
 
 //== Iconography
@@ -235,9 +238,12 @@ $dropdown-divider-bg:            #e5e5e5 !default;
 //** Dropdown link text color.
 $dropdown-link-color:            $gray-dark !default;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+// $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
+$dropdown-link-hover-color:      white;
+
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         #f5f5f5 !default;
+//$dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-hover-bg:         $color-combs-blue	 !default;
 
 //** Active dropdown menu item text color.
 $dropdown-link-active-color:     $component-active-color !default;
@@ -245,7 +251,7 @@ $dropdown-link-active-color:     $component-active-color !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
 
 //** Disabled dropdown menu item background color.
-$dropdown-link-disabled-color:   $gray-light !default;
+$dropdown-link-disabled-color:   $color-combs-grey-light !default;
 
 //** Text color for headers within dropdown menus.
 $dropdown-header-color:          $gray-light !default;
@@ -276,7 +282,7 @@ $zindex-modal:             1050 !default;
 
 // Extra small screen / phone
 //** Deprecated `$screen-xs` as of v3.0.1
-$screen-xs:                  em(480px) !default;
+$screen-xs:                  em(320px) !default;
 //** Deprecated `$screen-xs-min` as of v3.2.0
 $screen-xs-min:              $screen-xs !default;
 //** Deprecated `$screen-phone` as of v3.0.1
@@ -284,14 +290,14 @@ $screen-phone:               $screen-xs-min !default;
 
 // Small screen / tablet
 //** Deprecated `$screen-sm` as of v3.0.1
-$screen-sm:                  em(768px) !default;
+$screen-sm:                  em(480px) !default;
 $screen-sm-min:              $screen-sm !default;
 //** Deprecated `$screen-tablet` as of v3.0.1
 $screen-tablet:              $screen-sm-min !default;
 
 // Medium screen / desktop
 //** Deprecated `$screen-md` as of v3.0.1
-$screen-md:                  em(992px) !default;
+$screen-md:                  em(800px) !default;
 $screen-md-min:              $screen-md !default;
 //** Deprecated `$screen-desktop` as of v3.0.1
 $screen-desktop:             $screen-md-min !default;
@@ -312,7 +318,7 @@ $screen-md-max:              ($screen-lg-min - 1) !default;
 //== Grid system
 //
 //## Define your custom responsive grid.
- 
+
 //** Number of columns in the grid.
 $grid-columns:              12 !default;
 //** Padding between columns. Gets divided in half for the left and right.
@@ -349,30 +355,36 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    50px !default;
+$navbar-height:                    54px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
-$navbar-border-radius:             $border-radius-base !default;
+$navbar-margin-bottom: 0;
+
+// $navbar-border-radius:             $border-radius-base !default;
+$navbar-border-radius:             0;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
-$navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
+// $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
+$navbar-padding-vertical:          16px !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
+$navbar-default-color:             #fff !default;
+$navbar-default-bg:                $color-combs-blue !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-default-link-color:                #777 !default;
-$navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #555 !default;
+$navbar-default-link-color:                #ccc !default;
+$navbar-default-link-hover-color:          #fff !default;
+$navbar-default-link-hover-bg:             lighten($navbar-default-bg, 10%) !default;
+$navbar-default-link-active-color:         #fff !default;
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
-$navbar-default-brand-color:               $navbar-default-link-color !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
-$navbar-default-brand-hover-bg:            transparent !default;
+
+//$navbar-default-brand-color:               $navbar-default-link-color !default;
+$navbar-default-brand-color:               #fff !default;
+$navbar-default-brand-hover-color:         #fff !default;
+$navbar-default-brand-hover-bg:            lighten($navbar-default-bg, 10%) !default;
 
 // Navbar toggle
 $navbar-default-toggle-hover-bg:           #ddd !default;
@@ -445,11 +457,11 @@ $pagination-color:                     $link-color !default;
 $pagination-bg:                        #fff !default;
 $pagination-border:                    #ddd !default;
 
-$pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $gray-lighter !default;
+$pagination-hover-color:               white !default;
+$pagination-hover-bg:                  $brand-primary !default;
 $pagination-hover-border:              #ddd !default;
 
-$pagination-active-color:              #fff !default;
+$pagination-active-color:              #white !default;
 $pagination-active-bg:                 $brand-primary !default;
 $pagination-active-border:             $brand-primary !default;
 
@@ -478,10 +490,10 @@ $pager-disabled-color:                 $pagination-disabled-color !default;
 //
 //##
 
-$jumbotron-padding:              30px !default;
-$jumbotron-color:                inherit !default;
-$jumbotron-bg:                   $gray-lighter !default;
-$jumbotron-heading-color:        inherit !default;
+$jumbotron-padding:              30px * 0.5 !default;
+$jumbotron-color:                $color-combs-blue !default;
+$jumbotron-bg:                   $color-combs-grey-light !default;
+$jumbotron-heading-color:        $color-combs-blue !default;
 $jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default;
 
 
@@ -762,7 +774,7 @@ $well-border:                 darken($well-bg, 7%) !default;
 $badge-color:                 #fff !default;
 //** Linked badge text color on hover
 $badge-link-hover-color:      #fff !default;
-$badge-bg:                    $gray-light !default;
+$badge-bg:                    $color-combs-blue-grey;
 
 //** Badge text color in active nav link
 $badge-active-color:          $link-color !default;
@@ -856,5 +868,3 @@ $page-header-border-color:    $gray-lighter !default;
 $dl-horizontal-offset:        $component-offset-horizontal !default;
 //** Horizontal line color.
 $hr-border:                   $gray-lighter !default;
-
-

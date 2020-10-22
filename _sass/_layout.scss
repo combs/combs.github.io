@@ -234,3 +234,9 @@
         }
     }
 }
+
+.flex-except-xs {
+    @include media-query($on-laptop) {
+        display: flex;
+    }
+}

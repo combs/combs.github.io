@@ -1,0 +1,15 @@
+---
+layout: page
+title : Artwork
+header : Artwork (view all)
+group: navigation
+permalink: /artwork/all/
+tagline: Sort by <a href="/artwork/date/">date</a>, <a href="/artwork/all/" class="active">name</a>
+exclude_from_search: true
+---
+{% include JB/setup %}
+
+<div class="container-fluid thumbnails">
+{% assign thumbs_list = site.posts | where_exp: "post", "post.category contains 'Art Machine'" | sort: 'title' %}
+{% include thumbnails %}
+</div>

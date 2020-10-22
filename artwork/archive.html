@@ -1,0 +1,14 @@
+---
+layout: page
+title : Artwork
+group: nonavigation
+permalink: /artwork/date/
+tagline: Sort by <a href="/artwork/date/" class="active">date</a>, <a href="/artwork/all/">name</a>
+exclude_from_search: true
+
+---
+{% include JB/setup %}
+
+
+{% assign posts_collate = site.posts | where_exp: "post", "post.category contains 'Art Machine'"%}
+{% include JB/posts_collate %}

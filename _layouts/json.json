@@ -1,0 +1,7 @@
+---
+theme :
+  name : bootstrap-combs
+layout: default
+---
+{% include JB/setup %}
+{% include themes/bootstrap-combs/json.json %}
