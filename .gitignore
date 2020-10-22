@@ -2,3 +2,6 @@ _site
 .sass-cache
 node_modules
 .jekyll-cache
+_data/json-remote-cache
+assets/resized
+bower_components
