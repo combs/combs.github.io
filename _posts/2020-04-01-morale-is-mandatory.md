@@ -15,8 +15,8 @@ youtubes:
 videos: [morale-is-mandatory-overview-720p.mp4,morale-is-mandatory-detail-720p.mp4]
 roles: Creator
 materials: [WW2-era Bakelite milliampere meter, vintage steel electrical enclosure, pigment print, polyurethane, camera, LEDs, custom circuit boards, computer, hardware ]
-status: [Available]
-tags: [Python, Analog meter, Raspberry Pi,Artist, DEEP FAKE,Building Momentum, Found object]
+status: [Upcoming show]
+tags: [Python, Analog meter, Raspberry Pi, Artist, DEEP FAKE, Building Momentum, Found object]
 ---
 {% include JB/setup %}
 

@@ -16,7 +16,7 @@ shop: https://combs.bigcartel.com/product/8-bits-2-08-micro-b
 videos: 8-bits-micro-b-720p-low.mp4
 roles: Creator
 materials: [LEDs, circuit board, wood PLA, nighttime dimming sensor, electronic components]
-status: [Available, Edition of 50]
+status: [Available, Edition of 50, Upcoming show]
 tags: [Artist,"1460 Wallmountables 2020"]
 retailprice: 295
 ---
