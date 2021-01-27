@@ -10,6 +10,11 @@ exclude_from_search: true
 {% include JB/setup %}
 
 <div class="container-fluid thumbnails">
+
+{% include filters %}
+
 {% assign thumbs_list = site.posts | where_exp: "post", "post.category contains 'Art Machine'" | sort: 'title' %}
+
 {% include thumbnails %}
+
 </div>

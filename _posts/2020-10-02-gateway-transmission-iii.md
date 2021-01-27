@@ -11,12 +11,12 @@ gallerycaptions: ["","","","","Rear view."]
 heroimage: gateway-transmission-iii_01-2.jpg
 instagrams: []
 youtubes:
-link: 
+link: https://www.touchstonegallery.com/exhibits-all/2020/12/1/spotlight-group-show 
 videos: gateway-transmission-iii-720p-sharp-low.mp4
 roles: Creator
 materials: [Taxidermied wings (Gallus gallus), vintage industrial indicator, incandescent lightbulb, PLA, carnauba wax, polymorph, computer, custom circuitry]
-status: [Available]
-tags: [Artist, Found object, Transmission I-III, Transmission series, Arecibo message]
+status: [On display]
+tags: [Artist, Found object, Transmission I-III, Transmission series, Arecibo message, Spotlight@Touchstone]
 retailprice: 1195
 ---
 {% include JB/setup %}

@@ -13,7 +13,7 @@ youtubes:
 videos: [rxsqtta-stzne-overview-720p-sharp-low.mp4,rxsqtta-stzne-detail-720p-rot-sharp-low.mp4]
 roles: Creator
 materials: [Custom circuit boards, pink LEDs, computers, radios, motion sensors, algorithms, PLA, hardware, DIN rail]
-status: [Upcoming show, Available, Edition of 4]
+status: [Available, Edition of 4]
 tags: [Python, Stochastic arrangement,DCAC 30th Anniversary Party,Custom circuit boards,Raspberry Pi,Artist,"Enter : Future","Foundry Artist Choice 2020", Lossiness]
 ---
 {% include JB/setup %}

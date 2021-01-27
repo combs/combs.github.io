@@ -58,7 +58,7 @@
 	 			<h4><!--<a href="{{ BASE_PATH }}/projects/tag/#{{this_result.tag}}" title="{{ this_result.description | escape | replace: '"','&rdquo;' }}">-->{{ this_result.tag }}<!--</a>-->
 	 			{% if site.tags[this_result.tag].size > 1 %}
 		 			{% assign pages_list = site.tags[this_result.tag] | sort:'title' | sort_natural:'title' %}
-		 			{% include pages_list_dropdown alt=this_result.tag title="Also in&hellip;" %}
+		 			{% include pages_list_dropdown alt=this_result.tag title="Also&hellip;" %}
  			{% else %}
 	 			<button class="btn btn-small disabled">Only used here</button>
 	 			{% endif %}

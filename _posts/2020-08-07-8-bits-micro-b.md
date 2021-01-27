@@ -11,7 +11,8 @@ gallerycaptions: []
 heroimage: 8-bits-micro-b-01.jpg
 instagrams: []
 youtubes:
-link: https://dcartscenter.org/events/wallmountables/
+link: 
+shop: https://combs.bigcartel.com/product/8-bits-2-08-micro-b
 videos: 8-bits-micro-b-720p-low.mp4
 roles: Creator
 materials: [LEDs, circuit board, wood PLA, nighttime dimming sensor, electronic components]

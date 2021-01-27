@@ -84,10 +84,17 @@ a {
 
 .btn-default {
 
-	background-color: #ccc;
-	color: $color-combs-blue;
-	font-weight: 700;
-	text-transform: uppercase;
+	color: #fff;
+    background-color: $color-combs-blue;
+    border-color: transparent;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    &:active, &:hover {
+        background-color: $color-combs-blue-grey;
+        color: #fff;
+    }
 
 }
 

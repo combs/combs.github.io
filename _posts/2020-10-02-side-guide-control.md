@@ -15,8 +15,8 @@ link:
 videos: side-guide-control-720p-sharp-low.mp4
 roles: Creator
 materials: [Industrial steel enclosure, video, computer, LCD display]
-status: [Available]
-tags: [Artist, Lossiness, Raspberry Pi, Video, Found object, Stochastic arrangement]
+status: [On display]
+tags: [Artist, Lossiness, Raspberry Pi, Video, Found object, Stochastic arrangement, "Movements, Moments"]
 retailprice: 2295
 ---
 {% include JB/setup %}

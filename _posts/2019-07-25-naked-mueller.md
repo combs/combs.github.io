@@ -12,7 +12,7 @@ instagrams: [B0rS9QTlMzd]
 youtubes:
 roles: Creator
 materials: [Three-ring binder, paper, neural network]
-status: [Available, Edition of 15, Upcoming show]
+status: [Available, Edition of 15]
 tags: [Python, Neural networks, 1460 Wallmountables 2019, Mueller Report, DEEP FAKE]
 ---
 {% include JB/setup %}

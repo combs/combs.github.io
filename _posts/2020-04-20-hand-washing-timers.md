@@ -15,7 +15,7 @@ youtubes:
 videos: [hand-washing-timer-small-sd.mp4]
 roles: Creator
 materials: [Aluminum case, LED screen, computer, hardware]
-status: [Available]
+status: [Sold out]
 tags: [Arduino, Creator ]
 retailprice: [110,120,135]
 ---

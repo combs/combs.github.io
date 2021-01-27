@@ -1,0 +1,2 @@
+<h4 style="text-align: right;"><span style="display: inline-block; margin-right: 1em; margin-bottom: 1em;">Filter: </span> <a class="btn btn-default filter filter-all active">All</a> <a class="btn btn-default filter filter-available">Available</a> <a class="btn btn-default filter filter-on-display">On display</a> <a class="btn btn-default filter filter-upcoming-show">Upcoming show</a> <a class="btn btn-default filter filter-sold">Sold</a> 
+</h4>

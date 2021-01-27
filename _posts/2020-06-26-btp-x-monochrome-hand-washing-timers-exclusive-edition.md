@@ -13,7 +13,7 @@ instagrams: []
 youtubes:
 roles: Creator
 materials: [Aluminum case, LED screen, computer, hardware]
-status: [Available]
+status: [Sold out]
 tags: [Arduino, Creator,BTPxMonochrome Art Fair]
 retailprice: [220]
 ---

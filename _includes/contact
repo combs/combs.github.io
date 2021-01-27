@@ -1,7 +1,7 @@
 
 <h2>Drop me a note:</h2>
 
-<form action="http://formspree.io/ccombs+note@gmail.com" class="" method="POST">
+<form action="https://formspree.io/f/mzbkgpdp" class="" method="POST">
 <div class="form-group">
 <label for="body" class="control-label">Your message:</label>
 <textarea name="body" placeholder="..." id="body" class="form-control"></textarea>

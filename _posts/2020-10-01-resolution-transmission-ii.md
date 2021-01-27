@@ -15,7 +15,7 @@ link:
 videos: resolution-transmission-ii-720p-sharp-low.mp4
 roles: Creator
 materials: [Found branch, white LED, brass tubing, custom circuit board, rubber feet, computer]
-status: [In a private collection]
+status: In a private collection
 tags: [Artist, Transmission I-III, Transmission series, Arecibo message]
 retailprice: 795
 ---

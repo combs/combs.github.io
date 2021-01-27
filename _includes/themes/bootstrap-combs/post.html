@@ -147,6 +147,12 @@
 	{% endunless %}
 
 
+	{% unless page.shop == nil %}
+
+	<p><a href="{{ page.shop }}" class="btn btn-default">Shop Now</a></p>
+
+	{% endunless %}
+
       {{ content }}
     </div>
 
